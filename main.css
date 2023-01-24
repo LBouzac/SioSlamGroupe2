@@ -1,0 +1,9 @@
+body{
+    background-color: #87CEFA;
+}
+section{
+    position: fixed;
+    background-color: rgba(0, 0, 255, 0.505);
+    border-radius: 2vw;
+    margin: 25%;
+}
