@@ -1,3 +1,3 @@
 # SioSlamGroupe2
 
-fait par ...
+Fait par Ludovic, Sebastien, Hector
