@@ -9,14 +9,16 @@ body
 	font-family: 'Noto Sans JP', sans-serif;
 	padding: auto;
 	margin: auto;
-	background-color: #e0e0e0;
+	background-color: white;
 }
 
 /*   ---   Titre principal  ---   */
 
-#titreprincipal
+.titreprincipal
 {
-    text-align:center;
+	margin-left: auto;
+	text-align: center;
+	color:#001242ae;
 }
 
 /*   --- Pour la navigation (header) ---    */
@@ -75,12 +77,15 @@ nav .logo
 }
 
 
-nav .logo img {
+nav .logo img 
+{
 	width: 100px;
 	height: 90px;
 	border-radius: 50%;
 }
-nav .logo h1 {
+
+nav .logo h1 
+{
 	margin-left: 10px;
 	font-size: 15px;
     color: white;
@@ -109,7 +114,8 @@ nav .logo h1:hover
 {
 	text-transform: uppercase;
     font-family: 'Noto Sans JP', sans-serif;
-	margin : auto;
+	margin-left: 35%;
+	padding-top: 0%;
 	font-size: 6vw;
     width: 50%;
 }
@@ -136,7 +142,7 @@ nav .logo h1:hover
 .style-table 
 {
     border-collapse: collapse;
-    margin-left: auto;
+    margin-left: 35%;
     font-size: 0.9em;
     font-family: "Noto Sans JP" ,sans-serif;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.400);
@@ -218,6 +224,35 @@ th
 	width:20%;
 }
 
+
+/*  ---- Bouton supprimer ---- */
+
+.SUPPbutton
+{
+    background-color: #dd1212;
+    color: rgb(255, 255, 255);
+    border-radius: 5px;
+    margin-left: 5px;
+    padding: 5px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+
+/*   ---- Bouton  valider --- */
+
+.Validbutton
+{
+    background-color: #2fe61e;
+    color: rgb(255, 255, 255);
+    border-radius: 5px;
+    margin-left: 5px;
+    padding: 5px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+
 /*     ----     pied de page     ----      */
 
 footer 
@@ -230,7 +265,6 @@ footer
 	background-color:#001242ae;
 	color: white;
 }
-
 
 footer #colonne h3 
 {
@@ -280,6 +314,11 @@ footer p img
 	{
 		width: 80%;
 	}
+
+	.popup
+	{
+		width: 70%;
+	}
 }
 
 /*Pour le cadre en centre de page où se trouve diverses informations
@@ -289,6 +328,7 @@ section.infocase
 {
     position: absolute;
     background-color:#687ac2;
+	background-image: url('img/BgCase.jpg');
     box-shadow:10px 10px 10px rgba(245, 245, 245, 0.488);
     margin-left: auto;
     text-align: center;
@@ -299,25 +339,124 @@ section.infocase
 	padding-right: 20px;
     padding-left: 20px;
     padding-bottom: 20px;
-    width:20%;
+    width: 25%;
+	color : #001242ae;
 }
 
 
-/*   ----    Bouton de connexion    ----    */
+/*   ----    Bouton de connexion  et d'accueil  ----    */
 
-#connexionbouton
+button.boutonacces
 {
-    background-color:#001242ae;
-    color : white;
+	background-color: #001242ae;
+	color : white;
+	border-radius: 2vw;
 }
 
+/*     ----     Bouton oubli     -----   */
+button.boutonoubli
+{
+	background-color: transparent;
+	color : #001242ae;
+	border : transparent;
+}
 
 /*     ----    Les saisies   -----   */
 
-#userconnexion,#passwordconnexion,#userinscription,#mailinscription,#passwordinscription
+#userconnexion,#passwordconnexion,#userinscription,
+#mailinscription,#passwordinscription, #emailforgot, 
+#passwordforgot, #passwordforgotcheck , #codeforgot
 {
     background-color: white;
     border-radius: 2vw;      /*Pour arrondir les bords*/
+}
+
+/*  --- choix menu déroulant type sport ---- */
+
+.TypeSport
+{
+	background-color: blue;
+}
+
+/* --- pop up ---  */
+
+.popup 
+{
+    margin:  auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    width: 30%;
+    position: relative;	
+}
+  
+.popup h2 
+{
+    margin-top: 0;
+    color: #333;
+    font-family: 'Noto Sans JP', sans-serif;
+    padding: auto;
+}
+
+.popup .close 
+{
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    transition: all 200ms;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+}
+
+.popup .close:hover 
+{
+    color: #06D85F;
+}
+
+.popup .content 
+{
+    max-height: 30%;
+    overflow: auto;
+}
+
+/*   --- text area pop up ---- */
+
+textarea .pop
+{
+	border-radius: 1vw;
+	background-color: white;
+	margin:5px;
+}
+
+
+/*    ---- Form pop up  ----- */
+form .popup
+{
+    margin-left: 35%;
+}
+
+
+/*   --- Disparition pop up : overlay  --- */
+
+.overlay 
+{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.overlay:target 
+{
+    visibility: visible;
+    opacity: 1;
 }
 
 /*    ----    Background image    ---- */
@@ -326,3 +465,14 @@ section.infocase
 {
     padding-left: 5%;
 }
+
+
+/*    ----    Copyright     ---- */
+
+.copyright
+{
+	text-align:center;
+	background-color: #001242ae;
+	color:white;
+}
+
