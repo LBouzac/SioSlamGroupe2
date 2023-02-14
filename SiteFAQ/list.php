@@ -28,13 +28,13 @@
 </header>
 
 
-<body>
+<body> 
 
     <section class="page-content">
-        <header>
+        <!--<header>
             <h1 class="titreprincipal">FAQ</h1>
-        </header>
-
+        </header>-->
+        <img src="img/faqPage.png" alt="imageFAQ">
         <form action="" method="post" class="popup">
             <a href="#popup3" class="buttonA">Ajouter une question</a>
             <a href="list.php" class="buttonA">Annuler</a>
@@ -88,7 +88,6 @@
 
             </body>  
         </table>
-
 
     </section>
 
