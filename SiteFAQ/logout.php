@@ -1,3 +1,10 @@
+<?php
+    if(isset($_SESSION["pseudo"]))
+        unset($_SESSION["pseudo"]);
+    if(isset($_SESSION["mdp"]))
+        unset($_SESSION["mdp"]);
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
