@@ -31,7 +31,7 @@
     <h1 class = "titreprincipal">Bienvenue sur le site !</h1>
 
     <div class ="bgimg">
-        <img src ="img/M2L_bat.webp" width ='1400' height = '620'></a>
+        <img src ="img/M2L_bat.webp">
     </div>
 
 
