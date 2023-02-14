@@ -101,7 +101,10 @@ nav .logo h1:hover
 
 .page-content 
 {
-	margin: 4%;
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+	
 }
 
 .page-content header 
@@ -112,12 +115,11 @@ nav .logo h1:hover
 
 .page-content header h1 
 {
+	display: flex ;
 	text-transform: uppercase;
     font-family: 'Noto Sans JP', sans-serif;
-	margin-left: 35%;
 	padding-top: 0%;
 	font-size: 6vw;
-    width: 50%;
 }
 
 .page-content header p 
@@ -141,8 +143,8 @@ nav .logo h1:hover
 
 .style-table 
 {
+	margin-top: 10px;
     border-collapse: collapse;
-    margin-left: 35%;
     font-size: 0.9em;
     font-family: "Noto Sans JP" ,sans-serif;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.400);
@@ -382,12 +384,13 @@ button.boutonoubli
 
 .popup 
 {
-    margin:  auto;
+    margin: auto;
     padding: 20px;
-    background: #fff;
     border-radius: 5px;
     width: 30%;
-    position: relative;	
+    position: relative;
+	background-color: white;
+	box-shadow: 0 0 20px rgb(0 0 0 / 40%);
 }
   
 .popup h2 
@@ -419,6 +422,8 @@ button.boutonoubli
 {
     max-height: 30%;
     overflow: auto;
+	
+    background-color: white;
 }
 
 /*   --- text area pop up ---- */
@@ -475,4 +480,3 @@ form .popup
 	background-color: #001242ae;
 	color:white;
 }
-
