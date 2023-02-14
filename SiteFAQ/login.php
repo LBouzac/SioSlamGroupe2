@@ -1,3 +1,37 @@
+    <?php 
+    session_start();
+
+    if(isset($_SESSION["pseudo"]))
+        unset($_SESSION["pseudo"]);
+    if(isset($_SESSION["mdp"]))
+        unset($_SESSION["mdp"]);
+
+        require_once "config.php";
+        $identifiantsInvalid = FALSE;
+
+        if(isset($_POST["utilisateur"]) && $_POST["mdp"]){
+            $user = $_POST["utilisateur"];  
+            $pass = $_POST["mdp"];
+$pdo = new PDO('mysql:host='.DB_SERVER.';port='.DB_PORT.';dbname='.DB_NAME.'', DB_USERNAME, DB_PASSWORD);
+
+$sql = "SELECT utilisateur.idUtilisateur, utilisateur.pseudo FROM utilisateur WHERE utilisateur.pseudo = :user AND utilisateur.motDePasse = :pass";
+$sth = $pdo->prepare($sql, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
+$sth->execute(['user' => $user, 'pass' => $pass]);
+$usersFound = $sth->fetchAll();
+if(sizeof($usersFound) == 1){
+    $user = $usersFound[0];
+    $id = $user["idUtilisateur"];
+    $pseudo = $user["pseudo"];
+
+    $_SESSION["pseudo"] = $pseudo;
+    $_SESSION["mdp"] = $pass;   
+    header("Location: list.php");
+    }else{
+        $identifiantsInvalid = TRUE;
+    }    
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -32,33 +66,31 @@
         <img src ="img/M2L_bat.webp" width ='1400' height = '620'></a>
     </div>
 
-    <section class = "infocase">
+    <section class="infocase">
 
         <h2>Connexion :</h2>
-    
+        <div class="invalid-id">
+        <?php 
+        if($identifiantsInvalid == TRUE) {
+        echo('<p>Identifiants ou mot de passe invalides !</p>'); 
+        } 
+        ?>
+        </div>
         <p>
             Utilisateur :
         </p>
 
-        <form>
+        <form method="POST">
             <input name="utilisateur" id="userconnexion" type="text" value="" />
-        </form>
+        <p>Mot de passe :</p>
 
-        <p>
-            Mot de passe :
-        </p>
-
-        <form>
             <input name="mdp" id="passwordconnexion" type="password" size="16" />
-        </form>
+
 
         <br><br>
 
-        <a href = "list.php">
-            <button class = "boutonacces">
-                Se connecter
-            </button>
-        </a>
+            <input type="submit" value="Se connecter" class="boutonacces">          </form>
+
 
         <br><br>
 
@@ -96,6 +128,4 @@
     </div>
 
 </body>
-
-
 </html>
