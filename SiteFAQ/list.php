@@ -123,7 +123,7 @@
 	<div class="popup">
 		<h2>Etes-vous sur ?</h2>
 		<a class="close" href="#">&times;</a>
-		<a href="" class="SUPPbutton">Supprimer</a> <a class="button" href="list.html">Annuler</a>
+		<a href="" class="SUPPbutton">Supprimer</a> <a class="button" href="list.php">Annuler</a>
         
 	</div>
 </div>
@@ -133,7 +133,7 @@
         <h2>Modifier question</h2>
         <textarea name="Modifier" id="modifier" cols="20" rows="2"></textarea>
         <a class="close" href="#">&times;</a>
-		<p><a href="" class="Validbutton">Valider</a> <a class="button" href="list.html">Annuler</a></p>
+		<p><a href="" class="Validbutton">Valider</a> <a class="button" href="list.php">Annuler</a></p>
     
     </div>
 </div>
@@ -143,7 +143,7 @@
         <h2>Ajouter question</h2>
         <textarea name="Modifier" id="modifier" cols="20" rows="2"></textarea>
         <a class="close" href="#">&times;</a>
-		<p><a href="" class="Validbutton">Valider</a> <a class="button" href="list.html">Annuler</a></p>
+		<p><a href="" class="Validbutton">Valider</a> <a class="button" href="list.php">Annuler</a></p>
     
     </div>
 </div>
