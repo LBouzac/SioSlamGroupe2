@@ -1,3 +1,11 @@
+<?php 
+session_start();
+
+    if(!(isset($_SESSION["pseudo"]) && isset($_SESSION["mdp"]))){
+        header("Location: login.php");
+        return;
+    }
+?>
 <html lang="fr">
 <head>
     <meta charset="UTF-8" />
