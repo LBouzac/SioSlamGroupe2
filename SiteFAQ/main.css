@@ -468,7 +468,13 @@ form .popup
 
 .bgimg
 {
-    padding-left: 5%;
+	text-align: center;
+}
+
+.bgimg img
+{
+	width: 100%;
+	margin: auto;
 }
 
 
