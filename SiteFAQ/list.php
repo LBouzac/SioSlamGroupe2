@@ -64,7 +64,10 @@ session_start();
             {
                 $db = new PDO('mysql:host='.DB_SERVER.';port='.DB_PORT.';dbname='.DB_NAME.'', DB_USERNAME, DB_PASSWORD);
                 $db->exec("set charset utf8mb4");
-                $query = $db ->prepare('SELECT * FROM utilisateur ,ligue ,faq');
+                $query = $db ->prepare('SELECT * 
+                FROM ligue,faq, utilisateur 
+                WHERE faq.idUtilisateur=utilisateur.idUtilisateur AND utilisateur.idLigue=ligue.idLigue
+                GROUP BY utilisateur.idUtilisateur');
                 $query -> execute();
                 $site = $query->fetchAll();
                 //print_r($site);
