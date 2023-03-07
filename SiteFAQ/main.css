@@ -345,11 +345,12 @@ section.infocase
 
 /*   ----    Bouton de connexion  et d'accueil  ----    */
 
-button.boutonacces
+input.boutonacces
 {
 	background-color: #001242ae;
 	color : white;
 	border-radius: 2vw;
+	padding: 4px 15px;
 }
 
 /*     ----     Bouton oubli     -----   */
