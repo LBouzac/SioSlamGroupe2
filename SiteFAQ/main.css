@@ -4,7 +4,7 @@
 /*    ----  body     ----      */
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400&family=Oswald:wght@300&display=swap');
-body 
+body
 {
 	font-family: 'Noto Sans JP', sans-serif;
 	padding: auto;
@@ -149,7 +149,9 @@ nav .logo h1:hover
     font-family: "Noto Sans JP" ,sans-serif;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.400);
 }
-
+.style-table tr:nth-child(odd){
+	background: #041c5e7a;
+}
 .style-table thead tr 
 {
     background-color: #001242ae;
@@ -183,16 +185,15 @@ th
 	display: inline-block;
 }
 
-.buttona 
+.buttona
 {
 	background-color: #031649bd;
 	color: rgb(255, 255, 255);
 	border-radius: 5px;
 	margin-left: 5px;
-	padding-left: 5px;
-    padding-right: 5px;
-    text-decoration: none;
-    display: inline-block;
+	padding: 5px;
+	text-decoration: none;
+	display: inline-block;
 }
 
 .buttonblue 
@@ -204,11 +205,6 @@ th
 	padding: 5px;
 	text-decoration: none;
 	display: inline-block;
-}
-
-.alternance
-{
-	background-color: #041c5e7a;
 }
 
 /*---Tableau Supprimer---*/
