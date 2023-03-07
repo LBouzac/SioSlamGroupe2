@@ -345,7 +345,7 @@ section.infocase
 
 /*   ----    Bouton de connexion  et d'accueil  ----    */
 
-input.boutonacces
+input.boutonacces, button.boutonacces
 {
 	background-color: #001242ae;
 	color : white;
