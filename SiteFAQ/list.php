@@ -69,10 +69,6 @@ session_start();
                 $site = $query->fetchAll();
                 //print_r($site);
                 //die();
-                if ($site / 2 = 1)
-                {
-                    "class= alternance" ?
-                }
                 foreach ($site as $key => $values) {
                     echo("<tr class=alternance ><td>".$site[$key]['idUtilisateur']."</td><td>".$site[$key]['pseudo']."</td>");
                     echo("<td>".$site[$key]['libelleQuestion']."</td>");
