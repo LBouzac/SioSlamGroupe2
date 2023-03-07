@@ -1,4 +1,5 @@
-    <?php 
+<?php 
+    require_once "config.php";
     session_start();
 
     if(isset($_SESSION["pseudo"]))
@@ -6,30 +7,31 @@
     if(isset($_SESSION["mdp"]))
         unset($_SESSION["mdp"]);
 
-        require_once "config.php";
-        $identifiantsInvalid = FALSE;
+    $identifiantsInvalid = FALSE;
 
-        if(isset($_POST["utilisateur"]) && $_POST["mdp"]){
-            $user = $_POST["utilisateur"];  
-            $pass = $_POST["mdp"];
-$pdo = new PDO('mysql:host='.DB_SERVER.';port='.DB_PORT.';dbname='.DB_NAME.'', DB_USERNAME, DB_PASSWORD);
+    if(isset($_POST["utilisateur"]) && $_POST["mdp"]){
+        $user = $_POST["utilisateur"];  
+        $pass = $_POST["mdp"];
+        $pdo = new PDO('mysql:host='.DB_SERVER.';port='.DB_PORT.';dbname='.DB_NAME.'', DB_USERNAME, DB_PASSWORD);
+        $sql = "SELECT utilisateur.idUtilisateur, utilisateur.pseudo FROM utilisateur WHERE utilisateur.pseudo = :user AND utilisateur.motDePasse = :pass";
+        $sth = $pdo->prepare($sql, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
+        $sth->execute(['user' => $user, 'pass' => $pass]);
+        $usersFound = $sth->fetchAll();
+        if(sizeof($usersFound) == 1)
+        {
+            $user = $usersFound[0];
+            $id = $user["idUtilisateur"];
+            $pseudo = $user["pseudo"];
 
-$sql = "SELECT utilisateur.idUtilisateur, utilisateur.pseudo FROM utilisateur WHERE utilisateur.pseudo = :user AND utilisateur.motDePasse = :pass";
-$sth = $pdo->prepare($sql, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
-$sth->execute(['user' => $user, 'pass' => $pass]);
-$usersFound = $sth->fetchAll();
-if(sizeof($usersFound) == 1){
-    $user = $usersFound[0];
-    $id = $user["idUtilisateur"];
-    $pseudo = $user["pseudo"];
-
-    $_SESSION["pseudo"] = $pseudo;
-    $_SESSION["mdp"] = $pass;   
-    header("Location: list.php");
-    }else{
-        $identifiantsInvalid = TRUE;
-    }    
-}
+            $_SESSION["pseudo"] = $pseudo;
+            $_SESSION["mdp"] = $pass;   
+            header("Location: list.php");
+        }
+        else
+        {
+            $identifiantsInvalid = TRUE;
+        }    
+    }
 ?>
 
 <!DOCTYPE html>
