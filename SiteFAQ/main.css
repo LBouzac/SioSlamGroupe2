@@ -4,7 +4,7 @@
 /*    ----  body     ----      */
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400&family=Oswald:wght@300&display=swap');
-body 
+body
 {
 	font-family: 'Noto Sans JP', sans-serif;
 	padding: auto;
@@ -104,6 +104,7 @@ nav .logo h1:hover
 	display: flex;
     flex-direction: column;
     align-items: center;
+	
 }
 
 .page-content header 
@@ -114,7 +115,7 @@ nav .logo h1:hover
 
 .page-content header h1 
 {
-	display:flex;
+	display: flex ;
 	text-transform: uppercase;
     font-family: 'Noto Sans JP', sans-serif;
 	padding-top: 0%;
@@ -142,18 +143,16 @@ nav .logo h1:hover
 
 .style-table 
 {
-    margin-top:10px;
-	border-collapse: collapse;
+	margin-top: 10px;
+    border-collapse: collapse;
     font-size: 0.9em;
     font-family: "Noto Sans JP" ,sans-serif;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.400);
 }
+.style-table tr:nth-child(odd){
+	background: #041c5e7a;
 
-.style-table tr:nth-child(odd)
-{
-	background:#041c5e7a;
 }
-
 .style-table thead tr 
 {
     background-color: #001242ae;
@@ -178,29 +177,7 @@ th
 }
 .button 
 {
-	background-color: #031649bd;
-	color: rgb(255, 255, 255);
-	border-radius: 5px;
-	margin-left: 5px;
-	padding: 5px;
-	text-decoration: none;
-	display: inline-block;
-}
-
-.buttona 
-{
-	background-color: #031649bd;
-	color: rgb(255, 255, 255);
-	border-radius: 5px;
-	margin-left: 5px;
-	padding: 5px;
-    text-decoration: none;
-    display: inline-block;
-}
-
-.buttonblue 
-{
-	background-color: #ffffffbd;
+	background-color: #fdbb03;
 	color: rgb(0, 0, 0);
 	border-radius: 5px;
 	margin-left: 5px;
@@ -209,9 +186,26 @@ th
 	display: inline-block;
 }
 
-.alternance
+.buttona
 {
-	background-color: #041c5e7a;
+	background-color: #031649bd;
+	color: rgb(255, 255, 255);
+	border-radius: 5px;
+	margin-left: 5px;
+	padding: 5px;
+	text-decoration: none;
+	display: inline-block;
+}
+
+.buttonblue 
+{
+	background-color: #e01010;
+	color: rgb(0, 0, 0);
+	border-radius: 5px;
+	margin-left: 5px;
+	padding: 5px;
+	text-decoration: none;
+	display: inline-block;
 }
 
 /*---Tableau Supprimer---*/
@@ -249,7 +243,7 @@ th
 .Validbutton
 {
     background-color: #2fe61e;
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     border-radius: 5px;
     margin-left: 5px;
     padding: 5px;
@@ -387,7 +381,7 @@ button.boutonoubli
 
 .popup 
 {
-    margin:  auto;
+    margin: auto;
     padding: 20px;
     border-radius: 5px;
     width: 30%;
@@ -425,7 +419,8 @@ button.boutonoubli
 {
     max-height: 30%;
     overflow: auto;
-	background-color: white;
+	
+    background-color: white;
 }
 
 /*   --- text area pop up ---- */
@@ -488,6 +483,3 @@ form .popup
 	background-color: #001242ae;
 	color:white;
 }
-
-
-
