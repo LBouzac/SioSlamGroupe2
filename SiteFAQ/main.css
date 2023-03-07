@@ -88,7 +88,7 @@ nav .logo h1
 {
 	margin-left: 10px;
 	font-size: 15px;
-    color: white;
+    	color: white;
 }
 
 nav .logo h1:hover
@@ -102,8 +102,8 @@ nav .logo h1:hover
 .page-content 
 {
 	display: flex;
-    flex-direction: column;
-    align-items: center;
+    	flex-direction: column;
+	align-items: center;
 }
 
 .page-content header 
