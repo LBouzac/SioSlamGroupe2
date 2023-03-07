@@ -1,3 +1,30 @@
+<?php
+require_once "config.php";
+session_start();
+/*INSERT INTO utilisateur (idUtilisateur, pseudo, motDePasse, e_mail, idType, idLigue) VALUES (9, "test", "test", "email@test.com", 3, 3);*/
+
+
+if(isset($_POST["utilisateur"]) && $_POST["mdp"] && $_POST["mail"] && $_POST["TypeUtilisateur"] && $_POST["TypeSport"]){
+    $user = $_POST["utilisateur"];  
+    $pass = $_POST["mdp"];
+    $email = $_POST["mail"];
+    $idType = (int)$_POST["TypeUtilisateur"];
+    //die("idtype: ". $idType);
+    $idLigue = (int)$_POST["TypeSport"];
+    
+    $pdo = new PDO('mysql:host='.DB_SERVER.';port='.DB_PORT.';dbname='.DB_NAME.'', DB_USERNAME, DB_PASSWORD);
+    $sql = 'INSERT INTO utilisateur (pseudo, motDePasse, e_mail, idType, idLigue) VALUES (:user, :pass, :email, :idType, :idLigue);';
+    
+    //$sql = "SELECT utilisateur.idUtilisateur, utilisateur.pseudo FROM utilisateur WHERE utilisateur.pseudo = :user AND utilisateur.motDePasse = :pass";
+    
+    $sth = $pdo->prepare($sql, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
+    $sth->execute([':user' => $user, ':pass' => $pass, ':email' => $email, ':idType' => $idType, ':idLigue' => $idLigue]);
+    $sth->fetch();
+    header("Location: login.php");
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -36,17 +63,17 @@
 
         <h2>Inscription :</h2>
     
-        <label for="Utilisateur">
+      
             <br>Utilisateur : 
-        </label>
-        
+      
+        <form method="POST">
         <input name="utilisateur" id="userinscription" type="text"/>
         <br>
         
         <label for="mail">
             <br>Adresse e-mail : 
         </label>
-
+   
         <input name="mail" id="mailinscription" type="text"/>
         <br>
         
@@ -55,18 +82,19 @@
         <br><br>
         
         <select name="TypeUtilisateur" id="TypeUtilisateur">
-            <option value="SU">Simple Utilisateur</option>
-            <option value="A">Admin</option>
+            <option value="1">Simple Utilisateur</option>
+            <option value="2">Admin</option>
+            <option value="3">Super Admin</option>
         </select>
 
         <select name="TypeSport" id="TypeSport">
-            <option value="R15">Rugby à 15</option>
-            <option value="R13">Rugby à 13</option>
-            <option value="Foot">Footbal</option>
-            <option value="Basket">Basketball</option>
+            <option value="1">VolleyBall</option>
+            <option value="2">Basketball</option>+    
+            <option value="3">Footbal</option>
+            <option value="4">Handball</option>
         </select>
         <br><br>
-
+        
         <a href = "index.php">
             <button class = "boutonacces">
                 Annuler
@@ -80,7 +108,7 @@
                 Confirmer
             </button>
         </a>
-        
+</form>  
     </section>
 
     <footer>
