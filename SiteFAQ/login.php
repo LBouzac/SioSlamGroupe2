@@ -73,7 +73,7 @@
         <h2>Connexion :</h2>
         <div class="invalid-id">
         <?php 
-        if($identifiantsInvalid == TRUE) {
+        if($identifiantsInvalid) {
         echo('<p>Identifiants ou mot de passe invalides !</p>'); 
         } 
         ?>
