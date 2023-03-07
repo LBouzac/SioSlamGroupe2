@@ -1,5 +1,6 @@
 <?php 
 session_start();
+    include "config.php";
 
     if(!(isset($_SESSION["pseudo"]) && isset($_SESSION["mdp"]))){
         header("Location: login.php");
@@ -42,8 +43,8 @@ session_start();
         <!--<header>
             <h1 class="titreprincipal">FAQ</h1>
         </header>-->
-        <img src="img/faqPage.png" alt="imageFAQ">
-        <form action="" method="post" class="popup">
+        <img src="img/FAQ.png" alt="imageFAQ" width="400px" style="margin-top: 10px;">
+        <form action="list.php" method="post" class="popup">
             <a href="#popup3" class="buttonA">Ajouter une question</a>
             <a href="list.php" class="buttonA">Annuler</a>
         </form>
@@ -57,42 +58,33 @@ session_start();
                 <th>Reponse</th>
                 <th>Action</th>
             </tr>
-            <tr>
-                <td>1</td>
-                <td>User1</td>
-                <td>"une question"</td>
-                <td>"une réponse"</td>
-                
-                <td>
-                <a href="#popup2" class="button">Modifier</a> <a class="button" href="#popup1">Supprimer</a> 
-                </td>
-                
-            </tr>
+            <?php
 
-            <tr class="alternance">
-                <td>1</td>
-                <td>User1</td>
-                <td>"une question"</td>
-                <td>"une réponse"</td>
-                <td><a href="#popup2" class="buttonblue">Modifier</a> <a class="buttonblue" href="#popup1">Supprimer</a></td>
-            </tr>
-
-            <tr>
-                <td>1</td>
-                <td>User1</td>
-                <td>"une question"</td>
-                <td>"une réponse"</td>
-                <td><a href="#popup2" class="button">Modifier</a> <a class="button" href="#popup1">Supprimer</a></td>
-                </td>
-            </tr>
-
-            <tr class="alternance">
-                <td>1</td>
-                <td>User1</td>
-                <td>"une question"</td>
-                <td>"une réponse"</td>
-                <td><a href="#popup2" class="buttonblue">Modifier</a> <a class="buttonblue" href="#popup1">Supprimer</a></td>
-            </tr>
+            try  // A coriger -------------
+            {
+                $db = new PDO('mysql:host='.DB_SERVER.';port='.DB_PORT.';dbname='.DB_NAME.'', DB_USERNAME, DB_PASSWORD);
+                $db->exec("set charset utf8mb4");
+                $query = $db ->prepare('SELECT * FROM utilisateur ,ligue ,faq');
+                $query -> execute();
+                $site = $query->fetchAll();
+                //print_r($site);
+                //die();
+                if ($site / 2 = 1)
+                {
+                    "class= alternance" ?
+                }
+                foreach ($site as $key => $values) {
+                    echo("<tr class=alternance ><td>".$site[$key]['idUtilisateur']."</td><td>".$site[$key]['pseudo']."</td>");
+                    echo("<td>".$site[$key]['libelleQuestion']."</td>");
+                    echo("<td>".$site[$key]['reponseApportee']."</td>");
+                    echo("<td><a href=#popup2 class=button>"."Modifier"."</a><a class=buttonblue href=#popup1>"."Supprimer"."</a></td></tr>");
+                }
+            } catch(PDOException $e)
+            {
+                echo "erreur : ".$e->getMessage();
+                die;
+            }
+            ?>
 
             </body>  
         </table>
@@ -126,32 +118,41 @@ session_start();
 
 </body>
 
+<!-- A Faire -->
 
 <div id="popup1" class="overlay">
 	<div class="popup">
 		<h2>Etes-vous sur ?</h2>
-		<a class="close" href="#">&times;</a>
 		<a href="" class="SUPPbutton">Supprimer</a> <a class="button" href="list.php">Annuler</a>
         
 	</div>
 </div>
 
+<!-- A Faire -->
+
 <div id="popup2" class="overlay">
     <div class="popup">
         <h2>Modifier question</h2>
         <textarea name="Modifier" id="modifier" cols="20" rows="2"></textarea>
-        <a class="close" href="#">&times;</a>
 		<p><a href="" class="Validbutton">Valider</a> <a class="button" href="list.php">Annuler</a></p>
     
     </div>
 </div>
 
+<!-- En cours -->
+
 <div id="popup3" class="overlay">
     <div class="popup">
         <h2>Ajouter question</h2>
-        <textarea name="Modifier" id="modifier" cols="20" rows="2"></textarea>
-        <a class="close" href="#">&times;</a>
-		<p><a href="" class="Validbutton">Valider</a> <a class="button" href="list.php">Annuler</a></p>
+        <form action="list.php">
+        <?php
+        $date = DATE("");
+        $sql = "INSERT INTO FAQ (libelleQuestion, dateQuestion) VALUES('add', '$date')";
+        ?>
+        <textarea name="add" id="add" cols="20" rows="2"></textarea>
+		<p><a href="list.php" class="Validbutton">Valider</a> 
+        <a class="button" href="list.php">Annuler</a></p>
+        </form>
     
     </div>
 </div>
