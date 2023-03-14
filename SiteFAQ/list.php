@@ -44,9 +44,29 @@ session_start();
             <h1 class="titreprincipal">FAQ</h1>
         </header>-->
         <img src="img/FAQ.png" alt="imageFAQ" width="400px" style="margin-top: 10px;">
-        <form action="list.php" method="post" class="popup">
-            <a href="#popup3" class="buttonA">Ajouter une question</a>
-            <a href="list.php" class="buttonA">Annuler</a>
+        
+	<?php 
+        try{
+            $db = new PDO('mysql:host='.DB_SERVER.';port='.DB_PORT.';dbname='.DB_NAME.'', DB_USERNAME, DB_PASSWORD);
+        }        
+        catch(Exception $e){
+        die('Erreur : '.$e->getMessage());
+        }
+        if(isset($_POST["add"])) {
+        $add = $_POST['add'];
+        $id = $_SESSION["id"];
+        $sql = "INSERT INTO faq (libelleQuestion, idUtilisateur) VALUES(:add, :id)";
+        $supp = $db->prepare($sql);
+        $supp->execute([':add' => $add, ':id' => $id]);
+        }
+        ?>
+
+
+        <h2>Ajouter question</h2>
+        <form method="POST">
+        <textarea name="add" cols="20" rows="2"></textarea>
+        <button type="submit" class="Validbutton">Valider</button> 
+        <button class="button">Annuler</button>
         </form>
 
         <table class="style-table">
