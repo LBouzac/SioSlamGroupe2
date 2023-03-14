@@ -60,20 +60,19 @@ session_start();
             </tr>
             <?php
 
-            try  // A coriger -------------
+            try 
+            {
+               try  // A coriger -------------
             {
                 $db = new PDO('mysql:host='.DB_SERVER.';port='.DB_PORT.';dbname='.DB_NAME.'', DB_USERNAME, DB_PASSWORD);
                 $db->exec("set charset utf8mb4");
-                $query = $db ->prepare('SELECT * 
-                FROM ligue,faq, utilisateur 
-                WHERE faq.idUtilisateur=utilisateur.idUtilisateur AND utilisateur.idLigue=ligue.idLigue
-                GROUP BY utilisateur.idUtilisateur');
+                $query = $db ->prepare('SELECT idQuestion, pseudo, libelleQuestion,reponseApportee FROM faq, utilisateur WHERE faq.idUtilisateur=utilisateur.idUtilisateur');
                 $query -> execute();
                 $site = $query->fetchAll();
                 //print_r($site);
                 //die();
                 foreach ($site as $key => $values) {
-                    echo("<tr class=alternance ><td>".$site[$key]['idUtilisateur']."</td><td>".$site[$key]['pseudo']."</td>");
+                    echo("<tr class=alternance ><td>".$site[$key]['idQuestion']."</td><td>".$site[$key]['pseudo']."</td>");
                     echo("<td>".$site[$key]['libelleQuestion']."</td>");
                     echo("<td>".$site[$key]['reponseApportee']."</td>");
                     echo("<td><a href=#popup2 class=button>"."Modifier"."</a><a class=buttonblue href=#popup1>"."Supprimer"."</a></td></tr>");
