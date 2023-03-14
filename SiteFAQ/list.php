@@ -60,9 +60,8 @@ session_start();
             </tr>
             <?php
 
-            try 
-            {
-               try  // A coriger -------------
+            
+            try  // Permet de modifier et supprimer
             {
                 $db = new PDO('mysql:host='.DB_SERVER.';port='.DB_PORT.';dbname='.DB_NAME.'', DB_USERNAME, DB_PASSWORD);
                 $db->exec("set charset utf8mb4");
@@ -75,7 +74,7 @@ session_start();
                     echo("<tr class=alternance ><td>".$site[$key]['idQuestion']."</td><td>".$site[$key]['pseudo']."</td>");
                     echo("<td>".$site[$key]['libelleQuestion']."</td>");
                     echo("<td>".$site[$key]['reponseApportee']."</td>");
-                    echo("<td><a href=#popup2 class=button>"."Modifier"."</a><a class=buttonblue href=#popup1>"."Supprimer"."</a></td></tr>");
+                    echo("<td><a href=#popup2 class=button>"."Modifier"."</a><a class=SUPPbutton href=delete.php?idquestionSupp=".$site[$key]['idQuestion']."'>"."Supprimer"."</a></td></tr>");
                 }
             } catch(PDOException $e)
             {
