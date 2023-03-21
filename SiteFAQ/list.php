@@ -78,6 +78,7 @@ session_start();
                 <th>Reponse</th>
             </tr>
             <?php
+            if ((isset($_SESSION["Type"]))){
             if ($_SESSION["Type"] >= 2) {
    
             try  // Permet de modifier et supprimer
@@ -117,6 +118,7 @@ session_start();
                 die;
             }
         }
+    }
             ?>
 
             </body>  
