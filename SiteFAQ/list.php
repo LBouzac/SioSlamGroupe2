@@ -78,8 +78,7 @@ session_start();
                 <th>Reponse</th>
             </tr>
             <?php
-
-            if ($_SESSION["id"] === 1) {
+            if ($_SESSION["Type"] > 2) {
    
             try  // Permet de modifier et supprimer
             {
@@ -88,8 +87,6 @@ session_start();
                 $query = $db ->prepare('SELECT idQuestion, pseudo, libelleQuestion,reponseApportee FROM faq, utilisateur WHERE faq.idUtilisateur=utilisateur.idUtilisateur');
                 $query -> execute();
                 $site = $query->fetchAll();
-                //print_r($site);
-                //die();
                 foreach ($site as $key => $values) {
                     echo("<tr class=alternance ><td>".$site[$key]['idQuestion']."</td><td>".$site[$key]['pseudo']."</td>");
                     echo("<td>".$site[$key]['libelleQuestion']."</td>");
