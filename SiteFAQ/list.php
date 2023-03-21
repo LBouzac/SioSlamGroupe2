@@ -76,11 +76,11 @@ session_start();
                 <th>Utilisateur</th>
                 <th>Question</th>
                 <th>Reponse</th>
-                <th>Action</th>
             </tr>
             <?php
 
-            
+            if ($_SESSION["id"] === 1) {
+   
             try  // Permet de modifier et supprimer
             {
                 $db = new PDO('mysql:host='.DB_SERVER.';port='.DB_PORT.';dbname='.DB_NAME.'', DB_USERNAME, DB_PASSWORD);
@@ -101,6 +101,25 @@ session_start();
                 echo "erreur : ".$e->getMessage();
                 die;
             }
+        } else {
+            try
+            {
+                $db = new PDO('mysql:host='.DB_SERVER.';port='.DB_PORT.';dbname='.DB_NAME.'', DB_USERNAME, DB_PASSWORD);
+                $db->exec("set charset utf8mb4");
+                $query = $db ->prepare('SELECT idQuestion, pseudo, libelleQuestion,reponseApportee FROM faq, utilisateur WHERE faq.idUtilisateur=utilisateur.idUtilisateur');
+                $query -> execute();
+                $site = $query->fetchAll();
+                foreach ($site as $key => $values) {
+                    echo("<tr class=alternance ><td>".$site[$key]['idQuestion']."</td><td>".$site[$key]['pseudo']."</td>");
+                    echo("<td>".$site[$key]['libelleQuestion']."</td>");
+                    echo("<td>".$site[$key]['reponseApportee']."</td>");
+                }
+            } catch(PDOException $e)
+            {
+                echo "erreur : ".$e->getMessage();
+                die;
+            }
+        }
             ?>
 
             </body>  
@@ -134,42 +153,4 @@ session_start();
     </div>
 
 </body>
-
-<!-- A Faire -->
-
-<div id="popup1" class="overlay">
-	<div class="popup">
-		<h2>Etes-vous sur ?</h2>
-		<a href="" class="SUPPbutton">Supprimer</a> <a class="button" href="list.php">Annuler</a>
-        
-	</div>
-</div>
-
-<!-- A Faire -->
-
-<div id="popup2" class="overlay">
-    <div class="popup">
-        <h2>Modifier question</h2>
-        <textarea name="Modifier" id="modifier" cols="20" rows="2"></textarea>
-		<p><a href="" class="Validbutton">Valider</a> <a class="button" href="list.php">Annuler</a></p>
-    
-    </div>
-</div>
-
-<!-- En cours -->
-
-<div id="popup3" class="overlay">
-    <div class="popup">
-        <h2>Ajouter question</h2>
-        <form action="list.php">
-        <?php
-        $date = DATE("");
-        $sql = "INSERT INTO FAQ (libelleQuestion, dateQuestion) VALUES('add', '$date')";
-        ?>
-        <textarea name="add" id="add" cols="20" rows="2"></textarea>
-		<p><a href="list.php" class="Validbutton">Valider</a> 
-        <a class="button" href="list.php">Annuler</a></p>
-        </form>
-    
-    </div>
 </div>
