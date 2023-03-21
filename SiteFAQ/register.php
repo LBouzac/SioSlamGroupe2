@@ -18,7 +18,7 @@ if(isset($_POST["utilisateur"]) && $_POST["mdp"] && $_POST["mail"] && $_POST["Ty
     //$sql = "SELECT utilisateur.idUtilisateur, utilisateur.pseudo FROM utilisateur WHERE utilisateur.pseudo = :user AND utilisateur.motDePasse = :pass";
     
     $sth = $pdo->prepare($sql, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
-    $sth->execute([':user' => $user, ':pass' => $pass, ':email' => $email, ':idType' => $idType, ':idLigue' => $idLigue]);
+    $sth->execute(['user' => $user, 'pass' => $pass, 'email' => $email, 'idType' => $idType, 'idLigue' => $idLigue]);
     $sth->fetch();
     header("Location: login.php");
 }
