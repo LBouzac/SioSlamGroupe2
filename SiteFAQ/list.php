@@ -78,7 +78,7 @@ session_start();
                 <th>Reponse</th>
             </tr>
             <?php
-            if ($_SESSION["Type"] => 2) {
+            if ($_SESSION["Type"] > 2) {
    
             try  // Permet de modifier et supprimer
             {
