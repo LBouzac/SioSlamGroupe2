@@ -91,7 +91,7 @@ session_start();
                 foreach ($site as $key => $values) {
                     echo("<tr class=alternance ><td>".$site[$key]['idQuestion']."</td><td>".$site[$key]['pseudo']."</td>");
                     echo("<td>".$site[$key]['libelleQuestion']."</td>");
-                    echo("<td>".$site[$key]['reponseApportee']."</td>");
+                    echo ("<td><a class=button href=answer.php?idquestionRep=".$site[$key]['idQuestion'] . "'>" . $site[$key]['reponseApportee'] . "</td>");
                     echo("<td><a href=#popup2 class=button>"."Modifier"."</a><a class=SUPPbutton href=delete.php?idquestionSupp=".$site[$key]['idQuestion']."'>"."Supprimer"."</a></td></tr>");
                 }
             } catch(PDOException $e)
