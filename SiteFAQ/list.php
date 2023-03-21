@@ -57,7 +57,7 @@ session_start();
         $id = $_SESSION["id"];
         $sql = "INSERT INTO faq (libelleQuestion, idUtilisateur) VALUES(:add, :id)";
         $supp = $db->prepare($sql);
-        $supp->execute([':add' => $add, ':id' => $id]);
+        $supp->execute(['add' => $add, 'id' => $id]);
         }
         ?>
 
