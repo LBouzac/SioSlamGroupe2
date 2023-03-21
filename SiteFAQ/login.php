@@ -8,7 +8,7 @@
         unset($_SESSION["mdp"]);
 
     $identifiantsInvalid = FALSE;
-
+    try {
     if(isset($_POST["utilisateur"]) && $_POST["mdp"]){
         $user = $_POST["utilisateur"];  
         $pass = $_POST["mdp"];
@@ -22,7 +22,7 @@
             $user = $usersFound[0];
             $id = $user["idUtilisateur"];
             $pseudo = $user["pseudo"];
-
+            $_SESSION["id"] = $id;
             $_SESSION["pseudo"] = $pseudo;
             $_SESSION["mdp"] = $pass;   
             header("Location: list.php");
@@ -32,6 +32,10 @@
             $identifiantsInvalid = TRUE;
         }    
     }
+}
+catch(Exception $ex) {
+    die('Erreur : '.$ex->getMessage());
+}
 ?>
 
 <!DOCTYPE html>
