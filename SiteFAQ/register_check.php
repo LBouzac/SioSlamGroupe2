@@ -29,7 +29,7 @@
     <h1 class = "titreprincipal">Vous êtes inscrits à la M2L !</h1>
 
     <div class ="bgimg">
-        <img src ="img/M2L_bat.webp" width ='1400' height = '620'></a>
+        <img src ="img/M2L_bat.webp"></a>
     </div>
 
     <section class = "infocase">
@@ -61,8 +61,8 @@
 
         </div>
 
-        <div id="colonne">
-            <h3>Mes contact</h3>
+        <div id="colonne2">
+            <h3>Contact :</h3>
             <p>
                 <img src="img/mailLogo.png" width="12px">Mail : adresse@mail.com</a>
             </p>
