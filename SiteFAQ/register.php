@@ -62,14 +62,12 @@ if(isset($_POST["utilisateur"]) && $_POST["mdp"] && $_POST["mail"] && $_POST["Ty
     <section class = "infocase">
 
         <h2>Inscription :</h2>
-    
-      
-            <br>Utilisateur : 
-      
+          
         <form method="POST">
+        <br>Utilisateur : 
         <input name="utilisateur" id="userinscription" type="text"/>
-        <br>
         
+        <br>
         <label for="mail">
             <br>Adresse e-mail : 
         </label>
@@ -77,7 +75,10 @@ if(isset($_POST["utilisateur"]) && $_POST["mdp"] && $_POST["mail"] && $_POST["Ty
         <input name="mail" id="mailinscription" type="text"/>
         <br>
         
-        <label for="password"> <br>Mot De Passe : </label>
+        <label for="password">
+            <br>Mot De Passe : 
+        </label>
+
         <input name="mdp" id="passwordinscription" type="password"/>
         <br><br>
         
