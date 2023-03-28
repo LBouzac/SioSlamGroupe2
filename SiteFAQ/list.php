@@ -14,9 +14,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="main.css" />
     <link rel="icon" type="img/png" href="img/logo.png">
-    <title>
-        Site M2L
-    </title>
+    <title>list</title>
 </head>
 
 <header>
