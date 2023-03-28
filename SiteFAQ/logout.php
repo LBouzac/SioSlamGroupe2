@@ -1,8 +1,9 @@
 <?php
-    if(isset($_SESSION["pseudo"]))
-        unset($_SESSION["pseudo"]);
-    if(isset($_SESSION["mdp"]))
-        unset($_SESSION["mdp"]);
+    session_start();
+    unset($_SESSION["pseudo"]);
+    unset($_SESSION["mdp"]);
+    unset($_SESSION["id"]);
+    unset($_SESSION["Type"]);
 ?>
 
 <!DOCTYPE html>
@@ -61,8 +62,8 @@
 
         </div>
 
-        <div id="colonne">
-            <h3>Mes contact</h3>
+        <div id="colonne2">
+            <h3>Contact :</h3>
             <p>
                 <img src="img/mailLogo.png" width="12px">Mail : adresse@mail.com</a>
             </p>
