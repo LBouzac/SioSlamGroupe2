@@ -21,7 +21,8 @@ header('Location: list.php');
     ?>
     <form method="POST">
         <textarea name="add" id="add" cols="20" rows="1" required></textarea>
-        <p><button type="submit" class="Validbutton">Valider</button></p>
+        <p><button type="submit" class="Validbutton">Valider</button>
+        <a href="list.php">Annuler</button></a>
     </form>
     <?php
 }
