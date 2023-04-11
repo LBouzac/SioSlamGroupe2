@@ -1,30 +1,3 @@
-<?php
-require_once "config.php";
-session_start();
-/*INSERT INTO utilisateur (idUtilisateur, pseudo, motDePasse, e_mail, idType, idLigue) VALUES (9, "test", "test", "email@test.com", 3, 3);*/
-
-
-if(isset($_POST["utilisateur"]) && $_POST["mdp"] && $_POST["mail"] && $_POST["TypeUtilisateur"] && $_POST["TypeSport"]){
-    $user = $_POST["utilisateur"];  
-    $pass = $_POST["mdp"];
-    $email = $_POST["mail"];
-    $idType = (int)$_POST["TypeUtilisateur"];
-    //die("idtype: ". $idType);
-    $idLigue = (int)$_POST["TypeSport"];
-    
-    $pdo = new PDO('mysql:host='.DB_SERVER.';port='.DB_PORT.';dbname='.DB_NAME.'', DB_USERNAME, DB_PASSWORD);
-    $sql = 'INSERT INTO utilisateur (pseudo, motDePasse, e_mail, idType, idLigue) VALUES (:user, :pass, :email, :idType, :idLigue);';
-    
-    //$sql = "SELECT utilisateur.idUtilisateur, utilisateur.pseudo FROM utilisateur WHERE utilisateur.pseudo = :user AND utilisateur.motDePasse = :pass";
-    
-    $sth = $pdo->prepare($sql, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
-    $sth->execute(['user' => $user, 'pass' => $pass, 'email' => $email, 'idType' => $idType, 'idLigue' => $idLigue]);
-    $sth->fetch();
-    header("Location: login.php");
-}
-?>
-
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -95,7 +68,34 @@ if(isset($_POST["utilisateur"]) && $_POST["mdp"] && $_POST["mail"] && $_POST["Ty
             <option value="4">Handball</option>
         </select>
         <br><br>
-        
+        <?php
+require_once "config.php";
+session_start();
+/*INSERT INTO utilisateur (idUtilisateur, pseudo, motDePasse, e_mail, idType, idLigue) VALUES (9, "test", "test", "email@test.com", 3, 3);*/
+try {
+    if(isset($_POST["utilisateur"]) && $_POST["mdp"] && $_POST["mail"] && $_POST["TypeUtilisateur"] && $_POST["TypeSport"]){
+    $user = $_POST["utilisateur"];  
+    $pass = $_POST["mdp"];
+    $email = $_POST["mail"];
+    $idType = (int)$_POST["TypeUtilisateur"];
+    //die("idtype: ". $idType);
+    $idLigue = (int)$_POST["TypeSport"];
+    
+    $pdo = new PDO('mysql:host='.DB_SERVER.';port='.DB_PORT.';dbname='.DB_NAME.'', DB_USERNAME, DB_PASSWORD);
+    $sql = 'INSERT INTO utilisateur (pseudo, motDePasse, e_mail, idType, idLigue) VALUES (:user, :pass, :email, :idType, :idLigue);';
+    
+    //$sql = "SELECT utilisateur.idUtilisateur, utilisateur.pseudo FROM utilisateur WHERE utilisateur.pseudo = :user AND utilisateur.motDePasse = :pass";
+    
+    $sth = $pdo->prepare($sql, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
+    $sth->execute(['user' => $user, 'pass' => $pass, 'email' => $email, 'idType' => $idType, 'idLigue' => $idLigue]);
+    $sth->fetchAll();
+    header("Location: login.php");
+    }
+}
+catch(Exception $error) {
+    echo "<p>Erreur Nom Utilisateur / E-mail déjà existant</p>";
+}
+?>
         <a href = "index.php">
             <button class = "boutonacces">
                 Annuler
