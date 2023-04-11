@@ -1,7 +1,6 @@
 <?php 
 session_start();
     include "config.php";
-
     if(!(isset($_SESSION["pseudo"]) && isset($_SESSION["mdp"]))){
         header("Location: login.php");
         return;
@@ -94,25 +93,28 @@ session_start();
                     } catch (PDOException $e) {
                         echo "erreur : " . $e->getMessage();
                         die;
-                    } if ($_SESSION["Type"] == 2) { // Permet de modifier et supprimer por les admins de chaque sport
+                    } 
+                }
+                }if ($_SESSION["Type"] == 2) { // Permet de modifier et supprimer por les admins de chaque sport
                         try {
-                        $db = new PDO('mysql:host=' . DB_SERVER . ';port=' . DB_PORT . ';dbname=' . DB_NAME . '', DB_USERNAME, DB_PASSWORD);
-                        $db->exec("set charset utf8mb4");
-                        $query = $db->prepare('SELECT idQuestion, pseudo, libelleQuestion,reponseApportee FROM faq, utilisateur WHERE faq.idUtilisateur=utilisateur.idUtilisateur AND idLigue = :idLigue');
-                        $query->execute();
-                        $site = $query->fetchAll();
-                        foreach ($site as $key => $values) {
-                            echo ("<tr class=alternance ><td>" . $site[$key]['idQuestion'] . "</td><td>" . $site[$key]['pseudo'] . "</td>");
-                            echo ("<td>" . $site[$key]['libelleQuestion'] . "</td>");
-                            echo ("<td><a class=button href=answer.php?idquestionRep=".$site[$key]['idQuestion'] . "'>" . $site[$key]['reponseApportee'] . "</td>");
-                            echo("<td><a href='modif.php?idQuestionModif=".$site[$key]['idQuestion']."' class=button>"."Modifier"."</a><a class=SUPPbutton href=delete.php?idquestionSupp=" . $site[$key]['idQuestion'] . "'>" . "Supprimer" . "</a></td></tr>");
-                        }
+                            $db = new PDO('mysql:host=' . DB_SERVER . ';port=' . DB_PORT . ';dbname=' . DB_NAME . '', DB_USERNAME, DB_PASSWORD);
+                            $db->exec("set charset utf8mb4");
+                            $query = $db->prepare('SELECT idQuestion, pseudo, libelleQuestion,reponseApportee FROM faq, utilisateur WHERE faq.idUtilisateur=utilisateur.idUtilisateur AND idLigue = :idLigue');
+                            $query->execute([
+                                ":idLigue" => $_SESSION["Ligue"]
+                            ]);
+                            $site = $query->fetchAll();
+                            foreach ($site as $key => $values) {
+                                echo ("<tr class=alternance ><td>" . $site[$key]['idQuestion'] . "</td><td>" . $site[$key]['pseudo'] . "</td>");
+                                echo ("<td>" . $site[$key]['libelleQuestion'] . "</td>");
+                                echo ("<td><a class=button href=answer.php?idquestionRep=".$site[$key]['idQuestion'] . "'>" . $site[$key]['reponseApportee'] . "</td>");
+                                echo("<td><a href='modif.php?idQuestionModif=".$site[$key]['idQuestion']."' class=button>"."Modifier"."</a><a class=SUPPbutton href=delete.php?idquestionSupp=" . $site[$key]['idQuestion'] . "'>" . "Supprimer" . "</a></td></tr>");
+                            }
                         } catch (PDOException $e) {
                             echo "erreur : " . $e->getMessage();
                             die;
-                        }
-                    }
-                } else {
+                        } 
+                } if ($_SESSION["Type"] == 1) {
                     try {
                         $db = new PDO('mysql:host=' . DB_SERVER . ';port=' . DB_PORT . ';dbname=' . DB_NAME . '', DB_USERNAME, DB_PASSWORD);
                         $db->exec("set charset utf8mb4");
@@ -131,7 +133,7 @@ session_start();
                         die;
                     }
                 }
-            }
+            
             ?>
 
             </body>  
