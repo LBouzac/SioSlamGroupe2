@@ -13,7 +13,7 @@
         $user = $_POST["utilisateur"];  
         $pass = $_POST["mdp"];
         $pdo = new PDO('mysql:host='.DB_SERVER.';port='.DB_PORT.';dbname='.DB_NAME.'', DB_USERNAME, DB_PASSWORD);
-        $sql = "SELECT utilisateur.idType, utilisateur.idUtilisateur, utilisateur.pseudo FROM utilisateur WHERE utilisateur.pseudo = :user AND utilisateur.motDePasse = :pass";
+        $sql = "SELECT utilisateur.idType, utilisateur.idUtilisateur, utilisateur.pseudo, utilisateur.idLigue FROM utilisateur WHERE utilisateur.pseudo = :user AND utilisateur.motDePasse = :pass";
         $sth = $pdo->prepare($sql, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
         $sth->execute(['user' => $user, 'pass' => $pass]);
         $usersFound = $sth->fetchAll();
@@ -23,10 +23,12 @@
             $id = $user["idUtilisateur"];
             $Type = $user["idType"];
             $pseudo = $user["pseudo"];
+            $idLigue = $user["idLigue"];
             $_SESSION["id"] = $id;
             $_SESSION["Type"] = $Type;
             $_SESSION["pseudo"] = $pseudo;
             $_SESSION["mdp"] = $pass;   
+            $_SESSION["Ligue"] = $idLigue;
             header("Location: list.php");
         }
         else
