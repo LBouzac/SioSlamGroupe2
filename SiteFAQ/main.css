@@ -151,7 +151,6 @@ nav .logo h1:hover
 }
 .style-table tr:nth-child(odd){
 	background: #041c5e7a;
-
 }
 .style-table thead tr 
 {
@@ -186,17 +185,9 @@ th
 	display: inline-block;
 }
 
-.buttonRep .buttonRep:nth-child(even)
-{
-	background-color: white;
-	text-align: center;
-	min-width: 100px;
-	min-height: 25px;
-}
-
 .buttonRep
 {
-	background-color: #8792b2;
+	background-color: #6b6b6b;
 	text-align: center;
 	min-width: 100px;
 	min-height: 25px;
