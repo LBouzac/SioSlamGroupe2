@@ -63,7 +63,7 @@ session_start();
         <form method="POST">
         <textarea name="add" cols="20" rows="2"></textarea>
         <button type="submit" class="Validbutton">Valider</button> 
-        <button class="button">Annuler</button>
+        <button class="button" type="reset">Annuler</button>
         </form>
 
         <table class="style-table">
