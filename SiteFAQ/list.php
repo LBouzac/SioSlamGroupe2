@@ -76,7 +76,6 @@ session_start();
                 <th>Reponse</th>
             </tr>
             <?php
-            <?php
             if ((isset($_SESSION["Type"]))) {
                 if ($_SESSION["Type"] == 3) {
                     try  // Permet de modifier et supprimer
