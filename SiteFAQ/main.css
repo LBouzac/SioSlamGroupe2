@@ -186,6 +186,28 @@ th
 	display: inline-block;
 }
 
+.buttonRep .buttonRep:nth-child(even)
+{
+	background-color: white;
+	text-align: center;
+	min-width: 100px;
+	min-height: 25px;
+}
+
+.buttonRep
+{
+	background-color: #8792b2;
+	text-align: center;
+	min-width: 100px;
+	min-height: 25px;
+	color: rgb(0, 0, 0);
+	border-radius: 5px;
+	margin-left: 5px;
+	padding: 5px;
+	text-decoration: none;
+	display: inline-block;
+}
+
 .buttona
 {
 	background-color: #031649bd;
