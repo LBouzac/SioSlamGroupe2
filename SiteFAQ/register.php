@@ -64,8 +64,7 @@
         
         <select name="TypeUtilisateur" id="TypeUtilisateur">
             <option value="1">Simple Utilisateur</option>
-            <option value="2">Admin</option>
-            <option value="3">Super Admin</option>
+            <option value="2">Admin</option>  <!-- SuperAdmin est attribué manuellement-->
         </select>
 
         <select name="TypeSport" id="TypeSport">
