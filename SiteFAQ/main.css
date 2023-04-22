@@ -149,9 +149,12 @@ nav .logo h1:hover
     font-family: "Noto Sans JP" ,sans-serif;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.400);
 }
-.style-table tr:nth-child(odd){
+
+.style-table tr:nth-child(odd)
+{
 	background: #041c5e7a;
 }
+
 .style-table thead tr 
 {
     background-color: #001242ae;
@@ -174,6 +177,7 @@ th
 	color: #dddddd;
 	background-color: #031649bd;
 }
+
 .button 
 {
 	background-color: #fdbb03;
@@ -222,6 +226,7 @@ th
 }
 
 /*---Tableau Supprimer---*/
+
 .SUPPcase
 {
 	position: absolute;
@@ -255,7 +260,7 @@ th
 
 .Validbutton
 {
-    background-color: #42ca36;
+    background-color: #2fe61e;
     color: rgb(0, 0, 0);
     border-radius: 5px;
     margin-left: 5px;
@@ -269,6 +274,7 @@ th
 
 footer 
 {
+	/*margin-top: 5%;*/
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-around;
@@ -277,12 +283,12 @@ footer
 	color: white;
 }
 
-footer #colonne h3 
+footer #colonne h3/*, footer #colonne2 h3*/
 {
     font-size: 25px;
 }
 
-footer #colonne p
+footer #colonne p/*, footer #colonne2 p*/
 {
 	font-size: 15px;
 	color: rgb(255, 255, 255);
@@ -294,6 +300,14 @@ footer p img
 	margin-right: 5px;
 }
 
+/*
+footer #colonne2{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+*/
 
 
 /*        ----      Mode telephone portable     ----      */
@@ -350,7 +364,7 @@ section.infocase
 	padding-right: 20px;
     padding-left: 20px;
     padding-bottom: 20px;
-    width: 25%;
+    width: 25%; /*30%*/
 	color : #001242ae;
 }
 
@@ -365,7 +379,14 @@ input.boutonacces, button.boutonacces
 	padding: 4px 15px;
 }
 
+button a
+{
+	text-decoration: none;
+	color: white;
+}
+
 /*     ----     Bouton oubli     -----   */
+
 button.boutonoubli
 {
 	background-color: transparent;
@@ -373,11 +394,21 @@ button.boutonoubli
 	border : transparent;
 }
 
+
+/*      ---   Alignement bouton   ---    */
+/* en particulier pour answer.php*/
+
+.alignementbouton
+{
+	display: flex;
+	padding-left: 34%;
+}
+
 /*     ----    Les saisies   -----   */
 
 #userconnexion,#passwordconnexion,#userinscription,
 #mailinscription,#passwordinscription, #emailforgot, 
-#passwordforgot, #passwordforgotcheck , #codeforgot
+#passwordforgot, #passwordforgotcheck , #codeforgot, #passwordAconfirmerinscription
 {
     background-color: white;
     border-radius: 2vw;      /*Pour arrondir les bords*/
@@ -496,3 +527,5 @@ form .popup
 	background-color: #001242ae;
 	color:white;
 }
+
+
