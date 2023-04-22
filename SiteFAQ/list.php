@@ -73,7 +73,6 @@ session_start();
                 <th>Utilisateur</th>
                 <th>Question</th>
                 <th>Reponse</th>
-		<th>Action</th>
             </tr>
             <?php
             if ((isset($_SESSION["Type"]))) {
