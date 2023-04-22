@@ -283,12 +283,12 @@ footer
 	color: white;
 }
 
-footer #colonne h3/*, footer #colonne2 h3*/
+footer #colonne h3, footer #colonne2 h3
 {
     font-size: 25px;
 }
 
-footer #colonne p/*, footer #colonne2 p*/
+footer #colonne p, footer #colonne2 p
 {
 	font-size: 15px;
 	color: rgb(255, 255, 255);
@@ -300,14 +300,15 @@ footer p img
 	margin-right: 5px;
 }
 
-/*
-footer #colonne2{
+
+footer #colonne2
+{
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 }
-*/
+
 
 
 /*        ----      Mode telephone portable     ----      */
