@@ -72,10 +72,13 @@
             echo "<input type='hidden' name='idQuestionModif' value='$numquestion' />";  
             //echo "<input type='text' name='ModifQuestionLibelle' />";  
             echo "<textarea name='ModifQuestionLibelle' id='add' cols='40' rows='7' required></textarea>";
-            echo "<br><br>";                              
+            echo "<br><br>"; 
+            echo "<div class='alignementbouton'>";         
+            echo "<button class='boutonacces'><a href ='list.php'>Annuler</a></button>";                
             echo "<input class='boutonacces' type='submit' name='send' value='OK'>"; 
+            echo "</div>";
             echo "</form>";  
-            echo "<button class='boutonacces'><a href ='list.php'>Annuler</a></button>";                             
+                                         
             echo "<br><br>"; 
 
             if(isset($_POST['ModifQuestionLibelle']))
