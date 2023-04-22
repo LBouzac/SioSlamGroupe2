@@ -80,9 +80,12 @@
                 <br><br><strong>Réponse apportée :</strong>
                 <form method="POST">
                 <textarea name="add" id="add" cols="40" rows="7" required></textarea>
-                <p><button type="submit" class="boutonacces">Valider</button>
-                </form>
-                <button class="boutonacces"><a href="list.php">Annuler</a></button>
+                <div class="alignementbouton">
+                    <br><button class="boutonacces"><a href="list.php">Annuler</a></button>
+                    <br><button type="submit" class="boutonacces">Valider</button>
+                    </form>    
+                </div>
+                
         <?php
             }
         ?>
