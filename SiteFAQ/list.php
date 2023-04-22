@@ -139,7 +139,7 @@ session_start();
             </body>  
         </table>
 
-    </section>
+    </section><br><br>
 
     <footer>
         <div id="colonne">
