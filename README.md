@@ -3,5 +3,5 @@
 Fait par Ludovic, Sebastien, Hector
 
 Description :
-blablabla
+
 ....
